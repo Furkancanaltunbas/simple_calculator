@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var result: UILabel!
-    @IBOutlet weak var labelError: UILabel!
     
     var errorTwo = "please enter a valid number in the second space !"
     var errorOne = "please enter a valid number in the first blank !"
@@ -27,15 +26,14 @@ class ViewController: UIViewController {
             if let secondTextField = Int(secondTextField.text!) {
                            resultt = firstTextField + secondTextField
                 result.text = String(resultt)
-                labelError.text=""
                            
             }else{
-                labelError.text=errorTwo
+                errorMesaj(messageInput: errorTwo)
         }
             
         }
         else{
-            labelError.text=errorOne
+            errorMesaj(messageInput: errorOne)
         }
     }
     @IBAction func minusClicked(_ sender: Any) {
@@ -43,14 +41,13 @@ class ViewController: UIViewController {
             if let secondTextField = Int(secondTextField.text!) {
                            resultt = firstTextField - secondTextField
                 result.text = String(resultt)
-                labelError.text=""
             }else{
-                labelError.text=errorTwo
+                errorMesaj(messageInput: errorTwo)
         }
            
         }
         else{
-            labelError.text=errorOne
+            errorMesaj(messageInput: errorOne)
         }
     }
     @IBAction func multiplyClicked(_ sender: Any) {
@@ -58,14 +55,13 @@ class ViewController: UIViewController {
             if let secondTextField = Int(secondTextField.text!) {
                            resultt = firstTextField * secondTextField
                 result.text = String(resultt)
-                labelError.text=""
             }else{
-                labelError.text=errorTwo
+                errorMesaj(messageInput: errorTwo)
         }
             
         }
         else{
-            labelError.text=errorOne
+            errorMesaj(messageInput: errorOne)
         }
     }
     @IBAction func divideClicked(_ sender: Any) {
@@ -73,15 +69,21 @@ class ViewController: UIViewController {
             if let secondTextField = Int(secondTextField.text!) {
                            resultt = firstTextField / secondTextField
                 result.text = String(resultt)
-                labelError.text=""
             }else{
-                labelError.text=errorTwo
+                errorMesaj(messageInput: errorTwo)
         }
             
         }
         else{
-            labelError.text=errorOne
+            errorMesaj(messageInput: errorOne)
         }
+    }
+    
+    func errorMesaj(messageInput:String){
+        let alert = UIAlertController(title: "Error!", message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
     
     
